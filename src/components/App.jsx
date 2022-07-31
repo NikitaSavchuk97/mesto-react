@@ -7,7 +7,7 @@ function App() {
 
   const [isPopupTypeInfo, setIsPopupTypeInfo] = useState(false);
 
-  function handleEditProfileClick() {
+  function handleEditProfileClick() { 
     console.log(isPopupTypeInfo)
     console.log('МММ-ХУЕТА')
     setIsPopupTypeInfo(true);
