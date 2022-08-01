@@ -1,12 +1,16 @@
-function PopupWithForm({ name, open, close, title, child }) {
+function PopupWithForm({ name, open, close, title, children, type}) {
+	console.log(`Что в NAME: ${name}`)
+	console.log(`Что в OPEN: ${open}`)
 	return (
-		<div className="popup popup_type_info">
-			<div className="popup__container">
+		<div className={`popup popup_${name} ${open ? 'popup_active' : ''}`}>
+			<div className={`popup__container ${type}`}>
 
-				<button type="button" className="popup__close"></button>
-				<h2 className="popup__title">Редактировать профиль</h2>
-				<form className="popup__form" name="profile-form" method="post" noValidate>
-
+				<button type="button" onClick={close} className="popup__close"></button>
+				<h2 className="popup__title">{title}</h2>
+				<form className="popup__form" name={`${name}-form`} method="post" noValidate>
+					{
+						children
+					}
 				</form>
 
 			</div>
