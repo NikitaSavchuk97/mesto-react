@@ -1,6 +1,4 @@
 function PopupWithForm({ name, open, close, title, children, type}) {
-	console.log(`Что в NAME: ${name}`)
-	console.log(`Что в OPEN: ${open}`)
 	return (
 		<div className={`popup popup_${name} ${open ? 'popup_active' : ''}`}>
 			<div className={`popup__container ${type}`}>
