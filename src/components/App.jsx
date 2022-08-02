@@ -7,7 +7,7 @@ import PopupTypeInfo from "./PopupTypeInfo";
 import PopupTypeAvatar from "./PopupTypeAvatar";
 import PopupTypeAddCard from "./PopupTypeAddCard";
 import PopupTypeConfirm from "./PopupTypeConfirm";
-import PopupTypeIllustration from "./PopupTypeIllustartion";
+import PopupTypeIllustartion from "./ImagePopup";
 
 function App() {
 
@@ -65,7 +65,7 @@ function App() {
         close={closeThisPopup}
       />
 
-      <PopupTypeIllustration 
+      <PopupTypeIllustartion
         card={selectedCard}
         close={closeThisPopup}
       />
