@@ -39,8 +39,9 @@ function Main({cardClick, avatarClick, profileClick, illustrationClick}) {
 			<section className="elements">
 				{
 					cards.map((card) => (
-						<Card card={card} illustrationClick={illustrationClick} key={card._id}/>
-					))
+							<Card card={card} illustrationClick={illustrationClick} key={card._id}/>
+						)
+					)
 				}
 			</section>
 		</main >
