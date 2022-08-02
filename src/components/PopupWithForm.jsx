@@ -1,4 +1,4 @@
-function PopupWithForm({ name, open, close, title, children, type}) {
+function PopupWithForm({ name, open, close, title, children, type, text}) {
 	console.log('NAME ; ',name)
 	console.log('OPEN ; ',open)
 	console.log('CLOSE ; ',close)
@@ -17,7 +17,7 @@ function PopupWithForm({ name, open, close, title, children, type}) {
 						children
 					}
 				</form>
-
+				<button type="submit" className="popup__save-button popup__save-button_disabled" disabled>{text}</button>
 			</div>
 		</div>
 	)

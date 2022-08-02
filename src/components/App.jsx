@@ -49,21 +49,25 @@ function App() {
       <PopupTypeAvatar
         open={isEditAvatarPopupOpen}
         close={closeThisPopup}
+        text={'Сохранить'}
       />
 
       <PopupTypeInfo
         open={isEditInfoPopupOpen}
         close={closeThisPopup}
+        text={'Сохранить'}
       />
 
       <PopupTypeAddCard
         open={isAddCardPopupOpen}
         close={closeThisPopup}
+        text={'Создать'}
       />
 
       <PopupTypeConfirm
         open={isConfirmPopupOpen}
         close={closeThisPopup}
+        text={'Удалить'}
       />
 
       <ImagePopup

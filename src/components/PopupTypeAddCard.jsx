@@ -26,7 +26,6 @@ function PopupTypeAddCard ({open, close}) {
         required
       />
       <span className="popup__input-error url-input-error"></span>
-      <button type="submit" className="popup__save-button popup__save-button_disabled" disabled>Создать</button>
     </PopupWithForm>
   )
 }
