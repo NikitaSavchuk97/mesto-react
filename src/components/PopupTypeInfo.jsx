@@ -2,7 +2,7 @@ import PopupWithForm from "./PopupWithForm";
 
 function PopupTypeInfo ({open, close}) {
   return (
-    <PopupWithForm title='Редактировать профиль' name='type_info' open={open} close={close} type=''>
+    <PopupWithForm title='Редактировать профиль' name='type_info' open={open} close={close} type='' text={'Сохранить'}>
       <input
         className="popup__name popup__input"
         id="name-input"
@@ -28,8 +28,6 @@ function PopupTypeInfo ({open, close}) {
         required
       />
       <span className="popup__input-error about-input-error"></span>
-
-      <button type="submit" className="popup__save-button popup__save-button_disabled" disabled>Сохранить</button>
     </PopupWithForm>
   )
 }

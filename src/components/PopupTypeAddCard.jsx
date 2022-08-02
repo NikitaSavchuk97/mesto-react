@@ -2,7 +2,7 @@ import PopupWithForm from "./PopupWithForm";
 
 function PopupTypeAddCard ({open, close}) {
   return (
-    <PopupWithForm title='Новое место' name='type_photo' open={open} close={close} type=''>
+    <PopupWithForm title='Новое место' name='type_photo' open={open} close={close} type='' text={'Добавить'}>
       <input
         className="popup__name popup__input"
         id="spot-input"
