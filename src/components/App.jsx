@@ -3,11 +3,12 @@ import { useState } from "react";
 import Main from "./Main";
 import Header from "./Header";
 import Footer from "./Footer";
+import ImagePopup from "./ImagePopup";
 import PopupTypeInfo from "./PopupTypeInfo";
 import PopupTypeAvatar from "./PopupTypeAvatar";
 import PopupTypeAddCard from "./PopupTypeAddCard";
 import PopupTypeConfirm from "./PopupTypeConfirm";
-import PopupTypeIllustartion from "./ImagePopup";
+
 
 function App() {
 
@@ -65,7 +66,7 @@ function App() {
         close={closeThisPopup}
       />
 
-      <PopupTypeIllustartion
+      <ImagePopup
         card={selectedCard}
         close={closeThisPopup}
       />

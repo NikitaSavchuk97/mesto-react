@@ -1,4 +1,4 @@
-function PopupTypeIllustartion ({card, close}) {
+function ImagePopup ({card, close}) {
   return (
     <div className={`popup popup_type_illustration ${card.link && 'popup_active'}`}>
       <div className="popup__illustration">
@@ -10,4 +10,4 @@ function PopupTypeIllustartion ({card, close}) {
   )
 }
 
-export default PopupTypeIllustartion;
+export default ImagePopup;
