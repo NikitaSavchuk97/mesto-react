@@ -1,5 +1,3 @@
-import PopupWithForm from "./PopupWithForm";
-
 function PopupTypeIllustartion ({card, close}) {
   return (
     <div className={`popup popup_type_illustration ${card.link && 'popup_active'}`}>

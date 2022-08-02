@@ -4,10 +4,10 @@ import Main from "./Main";
 import Header from "./Header";
 import Footer from "./Footer";
 import PopupTypeInfo from "./PopupTypeInfo";
-import PopupTypeIllustration from "./PopupTypeIllustartion";
 import PopupTypeAvatar from "./PopupTypeAvatar";
 import PopupTypeAddCard from "./PopupTypeAddCard";
 import PopupTypeConfirm from "./PopupTypeConfirm";
+import PopupTypeIllustration from "./PopupTypeIllustartion";
 
 function App() {
 

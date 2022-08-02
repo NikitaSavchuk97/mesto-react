@@ -1,4 +1,11 @@
 function PopupWithForm({ name, open, close, title, children, type}) {
+	console.log('NAME ; ',name)
+	console.log('OPEN ; ',open)
+	console.log('CLOSE ; ',close)
+	console.log('TITLE ; ',title)
+	console.log('CHILDREN ; ',children)
+	console.log('TYPE ; ',type)
+
 	return (
 		<div className={`popup popup_${name} ${open ? 'popup_active' : ''}`}>
 			<div className={`popup__container ${type}`}>
