@@ -1,78 +1,92 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Main from "./Main";
 import Header from "./Header";
 import Footer from "./Footer";
+import api from "../utils/Api";
 import ImagePopup from "./ImagePopup";
 import PopupTypeInfo from "./PopupTypeInfo";
 import PopupTypeAvatar from "./PopupTypeAvatar";
 import PopupTypeAddCard from "./PopupTypeAddCard";
 import PopupTypeConfirm from "./PopupTypeConfirm";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 
 function App() {
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isEditInfoPopupOpen, setIsEditInfoPopupOpen] = useState(false);
-  const [isAddCardPopupOpen, setIsAddCardPopupOpen] = useState(false);
-  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({name:'', link:''});
+	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+	const [selectedCard, setSelectedCard] = useState({ name: '', link: '' });
+	const [isEditInfoPopupOpen, setIsEditInfoPopupOpen] = useState(false);
+	const [isAddCardPopupOpen, setIsAddCardPopupOpen] = useState(false);
+	const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
+	const [currentUser, setCurrentUser] = useState({});
 
-  function handleShowIllustrationClick (card) { setSelectedCard(card) };
-  function handleEditAvatarClick () { setIsEditAvatarPopupOpen(true) };
-  function handleEditProfileClick () { setIsEditInfoPopupOpen(true) };
-  function handleAddCardClick () { setIsAddCardPopupOpen(true) };
-  function handleConfirmClick () { setIsConfirmPopupOpen(true) };
+	useEffect(() => {
+		Promise.all([api.getUserInfo()])
+			.then(([user]) => {
+				console.log(user)
+				setCurrentUser(user)
+			})
+			.catch((err) => console.log(err));
+	}, []);
 
-  function closeThisPopup () {
-    setIsEditAvatarPopupOpen(false);
-    setIsEditInfoPopupOpen(false);
-    setIsAddCardPopupOpen(false);
-    setIsConfirmPopupOpen(false);
-    setSelectedCard({});
-  };
+	function handleShowIllustrationClick(card) { setSelectedCard(card) };
+	function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) };
+	function handleEditProfileClick() { setIsEditInfoPopupOpen(true) };
+	function handleAddCardClick() { setIsAddCardPopupOpen(true) };
+	function handleConfirmClick() { setIsConfirmPopupOpen(true) };
 
-  return (
-    <div className="page">
+	function closeThisPopup() {
+		setIsEditAvatarPopupOpen(false);
+		setIsEditInfoPopupOpen(false);
+		setIsAddCardPopupOpen(false);
+		setIsConfirmPopupOpen(false);
+		setSelectedCard({});
+	};
 
-      <Header />
+	return (
+		<CurrentUserContext.Provider value={currentUser}>
+			<div className="page">
 
-      <Main
-        cardClick={handleAddCardClick}
-        avatarClick={handleEditAvatarClick}
-        profileClick={handleEditProfileClick}
-        illustrationClick={handleShowIllustrationClick}
-      />
+				<Header />
 
-      <Footer />
+				<Main
+					cardClick={handleAddCardClick}
+					avatarClick={handleEditAvatarClick}
+					profileClick={handleEditProfileClick}
+					illustrationClick={handleShowIllustrationClick}
+				/>
 
-      <PopupTypeAvatar
-        open={isEditAvatarPopupOpen}
-        close={closeThisPopup}
-      />
+				<Footer />
 
-      <PopupTypeInfo
-        open={isEditInfoPopupOpen}
-        close={closeThisPopup}
-      />
+				<PopupTypeAvatar
+					open={isEditAvatarPopupOpen}
+					close={closeThisPopup}
+				/>
 
-      <PopupTypeAddCard
-        open={isAddCardPopupOpen}
-        close={closeThisPopup}
-      />
+				<PopupTypeInfo
+					open={isEditInfoPopupOpen}
+					close={closeThisPopup}
+				/>
 
-      <PopupTypeConfirm
-        open={isConfirmPopupOpen}
-        close={closeThisPopup}
-      />
+				<PopupTypeAddCard
+					open={isAddCardPopupOpen}
+					close={closeThisPopup}
+				/>
 
-      <ImagePopup
-        card={selectedCard}
-        close={closeThisPopup}
-      />
+				<PopupTypeConfirm
+					open={isConfirmPopupOpen}
+					close={closeThisPopup}
+				/>
 
-    </div>
-  );
+				<ImagePopup
+					card={selectedCard}
+					close={closeThisPopup}
+				/>
+
+			</div>
+		</CurrentUserContext.Provider>
+	);
 }
 
 export default App;
