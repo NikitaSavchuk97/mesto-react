@@ -12,13 +12,13 @@ class Api {
 		}).then(this._dataServerAnswer)
 	}
 
-	setUserInfo({ name, job }) {
+	setUserInfo({ name, about }) {
 		return fetch(`${this._baseUrl}/users/me`, {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
 				name: name,
-				about: job,
+				about: about,
 			})
 		}).then(this._dataServerAnswer)
 	}
@@ -81,10 +81,10 @@ class Api {
 
 const api = new Api({
 	baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
-  headers: {
+	headers: {
 		authorization: '73461d7d-29b1-45f6-bf45-d662ef1bce52',
 		'Content-Type': 'application/json',
-  },
+	},
 })
 
 export default api;

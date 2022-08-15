@@ -1,5 +1,3 @@
-//import logo from '../images/__logo.svg';
-
 function Header() {
 	return (
 		<header className="header">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 import Main from "./Main";
 import Header from "./Header";
@@ -9,7 +10,6 @@ import PopupTypeInfo from "./PopupTypeInfo";
 import PopupTypeAvatar from "./PopupTypeAvatar";
 import PopupTypeAddCard from "./PopupTypeAddCard";
 import PopupTypeConfirm from "./PopupTypeConfirm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
 	useEffect(() => {
 		Promise.all([api.getUserInfo()])
 			.then(([user]) => {
-				console.log(user)
 				setCurrentUser(user)
 			})
 			.catch((err) => console.log(err));
@@ -43,6 +42,13 @@ function App() {
 		setIsConfirmPopupOpen(false);
 		setSelectedCard({});
 	};
+
+	function handleUpdateUser(data) {
+		api.setUserInfo(data)
+			.then((res) => {
+				setCurrentUser(res)
+			})
+	}
 
 	return (
 		<CurrentUserContext.Provider value={currentUser}>
@@ -67,6 +73,7 @@ function App() {
 				<PopupTypeInfo
 					open={isEditInfoPopupOpen}
 					close={closeThisPopup}
+					onUpdateUser={handleUpdateUser}
 				/>
 
 				<PopupTypeAddCard
