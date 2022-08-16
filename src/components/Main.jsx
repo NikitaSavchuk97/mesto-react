@@ -7,7 +7,6 @@ function Main({ cardClick, avatarClick, profileClick, illustrationClick }) {
 
 	const currentUser = useContext(CurrentUserContext);
 	const [cards, setCards] = useState([])
-	const [idCardDelete, setIdCardDelete] = useState('')
 
 	useEffect(() => {
 		Promise.all([api.getCards()])
@@ -35,10 +34,9 @@ function Main({ cardClick, avatarClick, profileClick, illustrationClick }) {
 
 	function handleCardDelete(card) {
 		const isDeleted = card.owner._id === currentUser._id;
-		console.log(isDeleted)
 		api.deleteCard(card._id)
 			.then(() => {
-				setCards((state) => state.filter((item) => item._id !== idCardDelete))
+				setCards((res) => (res.filter((item) => item._id !== card._id)))
 			})
 	}
 

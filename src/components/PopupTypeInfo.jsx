@@ -4,7 +4,7 @@ import PopupWithForm from "./PopupWithForm";
 
 function PopupTypeInfo({ open, close, onUpdateUser }) {
 
-	const [name, setName] = useState('awdawdawdwa')
+	const [name, setName] = useState('')
 	const [description, setDescription] = useState('')
 	const currentUser = useContext(CurrentUserContext);
 

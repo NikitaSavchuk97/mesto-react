@@ -50,6 +50,13 @@ function App() {
 			})
 	}
 
+	function handleUpdateAvatar(data) {
+		api.setAvatar(data)
+			.then((res) => {
+				
+		})
+	}
+
 	return (
 		<CurrentUserContext.Provider value={currentUser}>
 			<div className="page">
