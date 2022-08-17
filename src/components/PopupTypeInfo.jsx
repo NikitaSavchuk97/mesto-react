@@ -31,7 +31,7 @@ function PopupTypeInfo({ open, close, onUpdateUser }) {
 	}
 
 	return (
-		<PopupWithForm title='Редактировать профиль' submit={handleSubmit} name='type_info' open={open} close={close} type='' text={'Сохранить'}>
+		<PopupWithForm name='type_info' title='Редактировать профиль' open={open} close={close} type='' text={'Сохранить'} submit={handleSubmit}>
 			<input
 				value={name}
 				onChange={handleNameChange}

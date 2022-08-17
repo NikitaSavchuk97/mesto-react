@@ -1,3 +1,14 @@
+const validationConfiguration = {
+	inputSelector: 'popup__input',
+	submitButtonSelector: 'popup__save-button',
+	inactiveButtonClass: 'popup__save-button_disabled',
+	inputErrorClass: 'popup__input_type_error',
+	errorClass: 'popup__input-error_type_active',
+};
+
+export default validationConfiguration;
+
+/*
 const templateSelector = '.template-item';
 
 const profileAvatar = document.querySelector('.profile__avatar');
@@ -17,70 +28,62 @@ const popupPhotoForm = popupPhoto.querySelector('.popup__form');
 
 const popupIllustration = document.querySelector('.popup_type_illustration');
 
-
-
-const validationConfiguration = {
-    inputSelector: 'popup__input',
-    submitButtonSelector: 'popup__save-button',
-    inactiveButtonClass: 'popup__save-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_type_active',
-};
-
 const popupConfiguration = {
-    popupCloseBtnCssClass: 'popup__close',
-    popupActiveCssClass: 'popup_active',
+		popupCloseBtnCssClass: 'popup__close',
+		popupActiveCssClass: 'popup_active',
 };
 
 const popupWithImageConfiguration = {
-    popupIllustrationImageSelector: '.popup__image',
-    popupIllustrationSubtitleSelector: '.popup__subtitle',
+		popupIllustrationImageSelector: '.popup__image',
+		popupIllustrationSubtitleSelector: '.popup__subtitle',
 };
 
 const popupWithFormConfiguration = {
-    popupFormSelector: '.popup__form',
-    popupFormInputSelector: '.popup__input',
-    popupFormSubmitBtnSelector: '.popup__save-button',
+		popupFormSelector: '.popup__form',
+		popupFormInputSelector: '.popup__input',
+		popupFormSubmitBtnSelector: '.popup__save-button',
 };
 
 const userInfoConfiguration = {
-    profileNameSelector: '.profile-info__name',
-    profileJobSelector: '.profile-info__title',
-    profileAvatarSelector: '.profile__avatar',
+		profileNameSelector: '.profile-info__name',
+		profileJobSelector: '.profile-info__title',
+		profileAvatarSelector: '.profile__avatar',
 };
 
 const sectionConfiguration = {
-    elementsSelector: '.elements',
+		elementsSelector: '.elements',
 };
 
 const apiConfiguration = {
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
-    headers: {
-        authorization: '73461d7d-29b1-45f6-bf45-d662ef1bce52',
-        'Content-Type': 'application/json',
-    }
+		baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
+		headers: {
+				authorization: '73461d7d-29b1-45f6-bf45-d662ef1bce52',
+				'Content-Type': 'application/json',
+		}
 }
 
 
 
 export {
-    validationConfiguration,
-    popupConfiguration,
-    popupWithImageConfiguration,
-    popupWithFormConfiguration,
-    userInfoConfiguration,
-    sectionConfiguration,
-    apiConfiguration,
-    templateSelector,
-    profileInfoEditBtn,
-    profileAvatarEditBtn,
-    popupAvatar,
-    popupInfo,
-    popupInfoForm,
-    popupInfoNameInput,
-    popupInfoJobInput,
-    popupIllustration,
-    profileAddPhotoBtn,
-    popupPhoto,
-    popupPhotoForm,
+		validationConfiguration,
+		popupConfiguration,
+		popupWithImageConfiguration,
+		popupWithFormConfiguration,
+		userInfoConfiguration,
+		sectionConfiguration,
+		apiConfiguration,
+		templateSelector,
+		profileInfoEditBtn,
+		profileAvatarEditBtn,
+		popupAvatar,
+		popupInfo,
+		popupInfoForm,
+		popupInfoNameInput,
+		popupInfoJobInput,
+		popupIllustration,
+		profileAddPhotoBtn,
+		popupPhoto,
+		popupPhotoForm,
 };
+
+*/

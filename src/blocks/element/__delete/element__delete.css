@@ -1,7 +1,7 @@
 .element__delete {
 	grid-area: delete;
 	grid-column: 2/3;
-	grid-row: 1/1;
+	grid-row: 1/2;
 
 	visibility: visible;
 	opacity: 1;

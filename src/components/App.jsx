@@ -14,20 +14,22 @@ import PopupTypeConfirm from "./PopupTypeConfirm";
 
 function App() {
 
+	useEffect(() => {
+		Promise.all([api.getUserInfo(), api.getCards()])
+			.then(([apiUser, apiCards]) => {
+				setCurrentUser(apiUser)
+				setCards(apiCards);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 	const [selectedCard, setSelectedCard] = useState({ name: '', link: '' });
 	const [isEditInfoPopupOpen, setIsEditInfoPopupOpen] = useState(false);
 	const [isAddCardPopupOpen, setIsAddCardPopupOpen] = useState(false);
 	const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
 	const [currentUser, setCurrentUser] = useState({});
-
-	useEffect(() => {
-		Promise.all([api.getUserInfo()])
-			.then(([user]) => {
-				setCurrentUser(user)
-			})
-			.catch((err) => console.log(err));
-	}, []);
+	const [cards, setCards] = useState([]);
 
 	function handleShowIllustrationClick(card) { setSelectedCard(card) };
 	function handleEditAvatarClick() { setIsEditAvatarPopupOpen(true) };
@@ -43,6 +45,30 @@ function App() {
 		setSelectedCard({});
 	};
 
+	function handleCardLike(card) {
+		const isLiked = card.likes.some(i => i._id === currentUser._id);
+		if (!isLiked) {
+			api.likeCard(card._id, !isLiked)
+				.then((newCard) => {
+					console.log(newCard)
+					setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+				});
+		} else {
+			api.dislikeCard(card._id, !isLiked)
+				.then((newCard) => {
+					setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+				});
+		}
+
+	}
+
+	function handleCardDelete(card) {
+		api.deleteCard(card._id)
+			.then(() => {
+				setCards((res) => (res.filter((item) => item._id !== card._id)))
+			})
+	}
+
 	function handleUpdateUser(data) {
 		api.setUserInfo(data)
 			.then((res) => {
@@ -53,8 +79,15 @@ function App() {
 	function handleUpdateAvatar(data) {
 		api.setAvatar(data)
 			.then((res) => {
-				
-		})
+				setCurrentUser(res)
+			})
+	}
+
+	function handleAddNewCard(data) {
+		api.setCard(data)
+			.then((res) => {
+				setCards([res, ...cards])
+			})
 	}
 
 	return (
@@ -64,6 +97,9 @@ function App() {
 				<Header />
 
 				<Main
+					cards={cards}
+					likeClick={handleCardLike}
+					deleteClick={handleCardDelete}
 					cardClick={handleAddCardClick}
 					avatarClick={handleEditAvatarClick}
 					profileClick={handleEditProfileClick}
@@ -73,17 +109,19 @@ function App() {
 				<Footer />
 
 				<PopupTypeAvatar
+					onUpdateAvatar={handleUpdateAvatar}
 					open={isEditAvatarPopupOpen}
 					close={closeThisPopup}
 				/>
 
 				<PopupTypeInfo
+					onUpdateUser={handleUpdateUser}
 					open={isEditInfoPopupOpen}
 					close={closeThisPopup}
-					onUpdateUser={handleUpdateUser}
 				/>
 
 				<PopupTypeAddCard
+					onAddNewCard={handleAddNewCard}
 					open={isAddCardPopupOpen}
 					close={closeThisPopup}
 				/>
