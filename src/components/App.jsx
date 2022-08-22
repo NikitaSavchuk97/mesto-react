@@ -47,19 +47,17 @@ function App() {
 
 	function handleCardLike(card) {
 		const isLiked = card.likes.some(i => i._id === currentUser._id);
+		let apiMethod;
 		if (!isLiked) {
-			api.likeCard(card._id, !isLiked)
-				.then((newCard) => {
-					console.log(newCard)
-					setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-				});
+			apiMethod = api.likeCard(card._id, !isLiked)
 		} else {
-			api.dislikeCard(card._id, !isLiked)
-				.then((newCard) => {
-					setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-				});
+			apiMethod = api.dislikeCard(card._id, !isLiked)
 		}
-
+		apiMethod
+			.then((newCard) => {
+				setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+			})
+			.catch((err) => console.log(err))
 	}
 
 	function handleCardDelete(card) {
@@ -67,13 +65,16 @@ function App() {
 			.then(() => {
 				setCards((res) => (res.filter((item) => item._id !== card._id)))
 			})
+			.catch((err) => console.log(err))
 	}
 
 	function handleUpdateUser(data) {
 		api.setUserInfo(data)
 			.then((res) => {
 				setCurrentUser(res)
+				closeThisPopup()
 			})
+			.catch((err) => console.log(err))
 	}
 
 	function handleUpdateAvatar(data) {
@@ -81,6 +82,7 @@ function App() {
 			.then((res) => {
 				setCurrentUser(res)
 			})
+			.catch((err) => console.log(err))
 	}
 
 	function handleAddNewCard(data) {
@@ -88,6 +90,7 @@ function App() {
 			.then((res) => {
 				setCards([res, ...cards])
 			})
+			.catch((err) => console.log(err))
 	}
 
 	return (

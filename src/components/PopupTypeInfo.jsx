@@ -11,7 +11,7 @@ function PopupTypeInfo({ open, close, onUpdateUser }) {
 	useEffect(() => {
 		setName(currentUser.name)
 		setDescription(currentUser.about)
-	}, [currentUser]);
+	}, [currentUser, open]);
 
 	function handleSubmit(evt) {
 		evt.preventDefault()
@@ -19,7 +19,6 @@ function PopupTypeInfo({ open, close, onUpdateUser }) {
 			name,
 			about: description,
 		})
-		close()
 	}
 
 	function handleNameChange(evt) {
