@@ -8,7 +8,6 @@ function PopupTypeAvatar({ open, close, onUpdateAvatar }) {
 	function handleSubmit(evt) {
 		evt.preventDefault();
 		onUpdateAvatar({ avatar: avatarInput.current.value });
-		close()
 	}
 
 	function handleAvatarChange(evt) {

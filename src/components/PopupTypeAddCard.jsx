@@ -9,7 +9,6 @@ function PopupTypeAddCard({ open, close, onAddNewCard }) {
 	function handleSubmit(evt) {
 		evt.preventDefault()
 		onAddNewCard({ name: newCardTitleInput.current.value, link: newCardUrlInput.current.value })
-		close()
 	}
 
 	function handleAddNewCard(evt) {
